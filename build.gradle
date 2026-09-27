@@ -1,20 +1,95 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
 }
 
-group = 'fr.mrqsdf'
-version = '1.0-SNAPSHOT'
+group = 'fr.olympus-engine'
+version = '1.0.0'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:6.0.0')
+    implementation 'io.github.classgraph:classgraph:4.8.184'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-test {
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+    withJavadocJar()
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('test') {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            pom {
+                name = 'Nomos Engine'
+                description = 'A framework-independent library for defining, registering, compiling, and casting token-based magic.'
+                url = 'https://github.com/Olympus-Engine/Nomos-Engine'
+
+                developers {
+                    developer {
+                        id = 'Mr_qsdf'
+                        name = 'Mr_qsdf'
+                        email = 'maqw@free.fr'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git://github.com/Olympus-Engine/Nomos-Engine.git'
+                    developerConnection = 'scm:git:ssh://github.com:Olympus-Engine/Nomos-Engine.git'
+                    url = 'https://github.com/Olympus-Engine/Nomos-Engine'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = 'StagingDirectory'
+            url = layout.buildDirectory.dir('repos/staging')
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
+
+tasks.register('cleanStagingRepository', Delete) {
+    delete layout.buildDirectory.dir('repos/staging')
+}
+
+tasks.named('publishMavenJavaPublicationToStagingDirectoryRepository') {
+    dependsOn 'cleanStagingRepository'
+}
+
+tasks.register('generateCentralBundle', Zip) {
+    dependsOn 'publishMavenJavaPublicationToStagingDirectoryRepository'
+    from layout.buildDirectory.dir('repos/staging')
+    include '**/*'
+    archiveFileName = 'bundle.zip'
+    destinationDirectory = layout.buildDirectory.dir('libs')
 }
