@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="action\" />
-    <Folder Include="cast\" />
-    <Folder Include="condition\" />
-    <Folder Include="cost\" />
-    <Folder Include="language\" />
-    <Folder Include="math\" />
-    <Folder Include="register\" />
     <Folder Include="resources\" />
   </ItemGroup>
 
