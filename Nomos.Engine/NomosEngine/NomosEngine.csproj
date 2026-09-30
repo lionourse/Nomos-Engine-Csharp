@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>NomosEngine</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="action\" />
+    <Folder Include="cast\" />
+    <Folder Include="condition\" />
+    <Folder Include="cost\" />
+    <Folder Include="language\" />
+    <Folder Include="math\" />
+    <Folder Include="register\" />
+    <Folder Include="resources\" />
+  </ItemGroup>
+
+</Project>

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Nomos Engine\Nomos Engine.csproj" />
+    <ProjectReference Include="..\NomosEngine\NomosEngine.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nomos Engine", "Nomos Engine\Nomos Engine.csproj", "{55001034-0790-4B5C-BFA9-2C59BBCEA0A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NomosEngine", "NomosEngine\NomosEngine.csproj", "{55001034-0790-4B5C-BFA9-2C59BBCEA0A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{1F3F653F-93D5-4C8E-99DE-08D1AA6A3A97}"
 EndProject

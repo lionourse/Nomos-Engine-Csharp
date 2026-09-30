@@ -1,3 +1,6 @@
-﻿using Nomos_Engine;
+﻿using NomosEngine;
+using NomosEngine.Semantic;
 
-Class1 class1 = new Class1();
+Nomos nomos = new Nomos();
+
+MagicMeaning magicMeaning = new MagicMeaning();
