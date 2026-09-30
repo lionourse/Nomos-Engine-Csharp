@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace NomosEngine.Utils
 {
-    public class AtomicReference<T> where T : class
+    public sealed class AtomicReference<T> where T : class
     {
         private T value;
 
